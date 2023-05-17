@@ -8,8 +8,8 @@ class ProductCategory(models.Model):
     description = models.TextField(null=True, blank=True)
 
     class Meta:
-        verbose_name = "Категория продукта"
-        verbose_name_plural = "Категории продуктов"
+        verbose_name = "категория(ю) продукта"
+        verbose_name_plural = "категории продуктов"
 
     def __str__(self):
         return self.name
@@ -24,8 +24,8 @@ class Product(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.PROTECT)
 
     class Meta:
-        verbose_name = "Продукт"
-        verbose_name_plural = "Продукты"
+        verbose_name = "продукт"
+        verbose_name_plural = "продукты"
 
     def __str__(self):
         return f'Продукт: {self.name} | Категория: {self.category.name}'
@@ -52,3 +52,7 @@ class Basket(models.Model):
 
     def sum(self):
         return self.product.price * self.quantity
+
+    class Meta:
+        verbose_name = "корзина"
+        verbose_name_plural = "корзины"
