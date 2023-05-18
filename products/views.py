@@ -1,14 +1,9 @@
-from typing import Any, Dict
-from django.db.models.query import QuerySet
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.urls import reverse
-from django.core.paginator import Paginator
 from django.views.generic.base import TemplateView
 from django.views.generic.list import ListView
 
 from .models import Product, ProductCategory, Basket
-from users.models import User
 
 
 class IndexView(TemplateView):
@@ -35,7 +30,6 @@ class ProductListView(ListView):
         queryset = super(ProductListView, self).get_queryset()
         category_id = self.kwargs.get('category_id')
         return queryset.filter(category_id=category_id) if category_id else queryset
-
 
 
 @login_required
