@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-=h4-tt_ghzec(dq#7on9b5#_n7!-cz^14=wb01_ywu#&&_)c%&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+DOMAIN_NAME = 'http://localhost:8000'
 
 
 # Application definition
@@ -144,10 +145,9 @@ LOGOUT_REDIRECT_URL = '/'
 
 # sending emails
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = "smtp.yandex.ru"
+EMAIL_PORT = 465
 EMAIL_HOST_USER = EMAIL_HOST_USER
 EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_PORT=587
+EMAIL_USE_SSL = True
