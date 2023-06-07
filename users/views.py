@@ -1,16 +1,14 @@
-from django.shortcuts import HttpResponseRedirect
-from django.views.generic.edit import CreateView, UpdateView
-from django.views.generic.base import TemplateView
-from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.views import LoginView
-from django.contrib import auth, messages
 from django.contrib.messages.views import SuccessMessageMixin
+from django.shortcuts import HttpResponseRedirect
 from django.urls import reverse, reverse_lazy
+from django.views.generic.base import TemplateView
+from django.views.generic.edit import CreateView, UpdateView
 
-from .models import User, EmailVerification
-from .forms import UserLoginForm, UserRegistrationForm, UserProfileForm
-from products.models import Basket
 from common.views import TitleMixin
+
+from .forms import UserLoginForm, UserProfileForm, UserRegistrationForm
+from .models import EmailVerification, User
 
 
 class UserLoginView(TitleMixin, LoginView):
@@ -33,7 +31,7 @@ class UserProfileView(TitleMixin, UpdateView):
     form_class = UserProfileForm
     template_name = 'users/profile.html'
     title = 'Store - личный кабинет'
-    
+
     def get_success_url(self) -> str:
         return reverse_lazy('users:profile', args=(self.object.id,))
 

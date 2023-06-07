@@ -8,6 +8,8 @@ django = "*"
 pillow = "*"
 
 [dev-packages]
+flake8 = "*"
+isort = "*"
 
 [requires]
 python_version = "3.10"
